@@ -22,6 +22,8 @@ include device/google_car/crosshatch_car/device-common.mk
 PRODUCT_COPY_FILES += \
     device/google/crosshatch/init.insmod.crosshatch.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.cfg
 
+DEVICE_PACKAGE_OVERLAYS += device/google/crosshatch/crosshatch/overlay
+
 # Audio XMLs
 PRODUCT_COPY_FILES += \
     device/google/crosshatch/mixer_paths_tavil_c1.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_tavil_c1.xml \
