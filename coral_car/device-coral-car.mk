@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2019 The Android Open-Source Project
+# Copyright 2019 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,10 +14,15 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/crosshatch_car/aosp_crosshatch_car.mk \
-    $(LOCAL_DIR)/coral_car/aosp_coral_car.mk
+PRODUCT_HARDWARE := coral
 
-COMMON_LUNCH_CHOICES := \
-    aosp_crosshatch_car-userdebug \
-    aosp_coral_car-userdebug
+$(call inherit-product, packages/services/Car/car_product/build/car.mk)
+include device/google_car/coral_car/device-common.mk
+
+DEVICE_PACKAGE_OVERLAYS += device/google/coral/coral/overlay
+
+PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=250
+
+# Audio XMLs for coral
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/audio_policy_volumes_coral.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
