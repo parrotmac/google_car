@@ -48,15 +48,13 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
             android.hardware.automotive.audiocontrol@1.0-service \
-            android.hardware.automotive.evs@1.1-service
-PRODUCT_PACKAGES += android.hardware.automotive.occupant_awareness@1.0-service
-PRODUCT_PACKAGES += android.hardware.automotive.occupant_awareness@1.0-service_mock
+	    android.hardware.automotive.evs@1.0-service
 
 # Car init.rc
 PRODUCT_COPY_FILES += \
             packages/services/Car/car_product/init/init.bootstat.rc:root/init.bootstat.rc \
             packages/services/Car/car_product/init/init.car.rc:root/init.car.rc \
-	    $(LOCAL_PATH)/vendor/automotive.evs@1.1-service.rc:/vendor/etc/init/android.hardware.automotive.evs@1.1-service.rc
+	    $(LOCAL_PATH)/vendor/automotive.evs@1.0-service.rc:/vendor/etc/init/android.hardware.automotive.evs@1.0-service.rc
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
