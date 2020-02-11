@@ -1,1 +1,0 @@
-allow hal_evs_default system_file:file {read open getattr};
