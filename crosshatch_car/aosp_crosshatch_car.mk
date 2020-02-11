@@ -61,6 +61,7 @@ TARGET_USES_CAR_FUTURE_FEATURES := true
 
 PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/car_core_hardware.xml:system/etc/permissions/car_core_hardware.xml \
+        frameworks/native/data/etc/android.hardware.type.automotive.xml:system/etc/permissions/android.hardware.type.automotive.xml \
         frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
         frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
         frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
