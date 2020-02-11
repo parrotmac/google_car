@@ -29,8 +29,7 @@ include device/google/crosshatch/device.mk
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.control_privapp_permissions=disable
 
-PRODUCT_ENFORCE_RRO_TARGETS := frameworks-res
-
+PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
 # Audio fluence, ns, aec property, voice volume steps
 PRODUCT_PROPERTY_OVERRIDES += \
