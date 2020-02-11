@@ -30,9 +30,6 @@ PRODUCT_ENFORCE_RRO_TARGETS :=
 # TODO(b/138706293): Enable mainline checking later
 # PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
 
-PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
-    root/init.zygote64_32.rc \
-
 #
 # All components inherited here go to product image
 #
