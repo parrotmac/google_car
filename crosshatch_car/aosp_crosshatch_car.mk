@@ -15,6 +15,7 @@
 #
 
 DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/crosshatch_car/manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/common/manifest.xml
 
 #
 # All components inherited here go to system image
@@ -47,7 +48,6 @@ PRODUCT_PACKAGES += \
             android.hardware.automotive.vehicle@2.0-service
 
 PRODUCT_PACKAGES += \
-            android.hardware.automotive.audiocontrol@1.0-service \
 	    android.hardware.automotive.evs@1.0-service
 
 # Car init.rc
@@ -100,6 +100,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
 $(call inherit-product, device/google_car/crosshatch_car/device-crosshatch-car.mk)
+$(call inherit-product, device/google_car/common/google_car.mk)
 $(call inherit-product-if-exists, vendor/google_devices/crosshatch/proprietary/device-vendor.mk)
 
 
