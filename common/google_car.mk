@@ -16,5 +16,11 @@
 
 # Auto modules
 PRODUCT_PACKAGES += \
-            android.hardware.automotive.audiocontrol@1.0-service
+            android.hardware.automotive.audiocontrol@1.0-service \
+            android.hardware.automotive.can@1.0-service
+
+PRODUCT_PACKAGES_DEBUG += \
+            canhalctrl \
+            canhaldump \
+            canhalsend
 

@@ -8,4 +8,18 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="hidl">
+        <name>android.hardware.automotive.can</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ICanController</name>
+            <instance>socketcan</instance>
+        </interface>
+        <interface>
+            <name>ICanBus</name>
+            <instance>test1</instance>
+	    <instance>test2</instance>
+        </interface>
+    </hal>
 </manifest>
