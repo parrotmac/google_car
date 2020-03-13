@@ -60,6 +60,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
             dalvik.vm.heapgrowthlimit=256m
 
+PRODUCT_PACKAGE_OVERLAYS += device/google_car/crosshatch_car/overlay
+
+# Pre-create users
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    android.car.number_pre_created_users=1 \
+    android.car.number_pre_created_guests=1
+
 # Enable landscape
 PRODUCT_COPY_FILES += \
             frameworks/native/data/etc/android.hardware.screen.landscape.xml:system/etc/permissions/android.hardware.screen.landscape.xml
