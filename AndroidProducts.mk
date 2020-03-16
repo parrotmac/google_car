@@ -16,10 +16,8 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/crosshatch_car/aosp_crosshatch_car.mk \
-    $(LOCAL_DIR)/coral_car/aosp_coral_car.mk \
-    $(LOCAL_DIR)/blueline_car/aosp_blueline_car.mk
+    $(LOCAL_DIR)/coral_car/aosp_coral_car.mk
 
 COMMON_LUNCH_CHOICES := \
     aosp_crosshatch_car-userdebug \
-    aosp_coral_car-userdebug \
-    aosp_blueline_car-userdebug
+    aosp_coral_car-userdebug
