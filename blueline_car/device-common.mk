@@ -16,8 +16,6 @@
 
 TARGET_USERIMAGES_USE_F2FS := true
 
-LOCAL_PATH := device/google/crosshatch
-
 # define hardware platform
 PRODUCT_PLATFORM := sdm845
 
