@@ -18,6 +18,7 @@ PRODUCT_HARDWARE := crosshatch
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 include device/google_car/crosshatch_car/device-common.mk
+include packages/services/Car/computepipe/products/computepipe.mk
 
 PRODUCT_COPY_FILES += \
     device/google/crosshatch/init.insmod.crosshatch.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.cfg
