@@ -60,7 +60,7 @@ PRODUCT_PACKAGE_OVERLAYS += device/google_car/flame_car/overlay
 # Pre-create users
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     android.car.number_pre_created_users=1 \
-    android.car.number_pre_created_guests=1
+    android.car.number_pre_created_guests=2
 
 # Enable landscape
 PRODUCT_COPY_FILES += \
