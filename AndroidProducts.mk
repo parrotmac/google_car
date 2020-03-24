@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2019 The Android Open-Source Project
+# Copyright 2020 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,9 +15,13 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/crosshatch_car/aosp_crosshatch_car.mk \
-    $(LOCAL_DIR)/coral_car/aosp_coral_car.mk
+    $(LOCAL_DIR)/blueline_car/aosp_blueline_car.mk \
+    $(LOCAL_DIR)/flame_car/aosp_flame_car.mk \
+    $(LOCAL_DIR)/coral_car/aosp_coral_car.mk \
+    $(LOCAL_DIR)/crosshatch_car/aosp_crosshatch_car.mk
 
 COMMON_LUNCH_CHOICES := \
-    aosp_crosshatch_car-userdebug \
-    aosp_coral_car-userdebug
+    aosp_blueline_car-userdebug \
+    aosp_flame_car-userdebug \
+    aosp_coral_car-userdebug \
+    aosp_crosshatch_car-userdebug
