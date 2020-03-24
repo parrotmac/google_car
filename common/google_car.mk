@@ -27,9 +27,6 @@ PRODUCT_PACKAGES_DEBUG += \
             android.hardware.automotive.occupant_awareness@1.0-service \
             android.hardware.automotive.occupant_awareness@1.0-service_mock
 
-PRODUCT_COPY_FILES += \
-            $(LOCAL_PATH)/vendor/automotive.evs@1.1-service.rc:/vendor/etc/init/android.hardware.automotive.evs@1.1-service.rc
-
 BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
 
 # EVS v1.1
