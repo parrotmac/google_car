@@ -152,3 +152,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_product=bin/check_dynamic_partitions \
     FILESYSTEM_TYPE_product=ext4 \
     POSTINSTALL_OPTIONAL_product=false \
+
+# Sepolicy for EVS
+BOARD_SEPOLICY_DIRS += packages/services/Car/evs/sepolicy
