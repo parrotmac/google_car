@@ -120,3 +120,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.thermal_warmreset = true \
 
 PRODUCT_ENFORCE_PRODUCT_PARTITION_INTERFACE := true
+
+# Sepolicy for EVS
+BOARD_SEPOLICY_DIRS += packages/services/Car/evs/sepolicy
