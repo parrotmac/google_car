@@ -47,8 +47,7 @@ PRODUCT_PACKAGES += \
             android.hardware.automotive.vehicle@2.0-service
 
 PRODUCT_PACKAGES += \
-            android.hardware.automotive.audiocontrol@1.0-service \
-            android.hardware.automotive.evs@1.0-service
+            android.hardware.automotive.audiocontrol@1.0-service
 
 # Car init.rc
 PRODUCT_COPY_FILES += \
