@@ -23,7 +23,6 @@ PRODUCT_PACKAGES_DEBUG += \
             canhalctrl \
             canhaldump \
             canhalsend \
-            android.hardware.automotive.evs@1.1-service \
             android.hardware.automotive.occupant_awareness@1.0-service \
             android.hardware.automotive.occupant_awareness@1.0-service_mock
 
