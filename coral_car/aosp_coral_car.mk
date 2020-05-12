@@ -46,6 +46,9 @@ PRODUCT_PACKAGES += \
             android.hardware.broadcastradio@2.0-service \
             android.hardware.automotive.vehicle@2.0-service
 
+# Additional selinux policy
+BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
+
 # Car init.rc
 PRODUCT_COPY_FILES += \
             packages/services/Car/car_product/init/init.bootstat.rc:root/init.bootstat.rc \
