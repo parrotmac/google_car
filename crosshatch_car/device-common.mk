@@ -140,9 +140,13 @@ PRODUCT_PACKAGES += \
 #
 
 # Enable retrofit dynamic partitions for all blueline
-# and crosshatch targets
+# and crosshatch (except for hwaddress) targets
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+ifneq (,$(filter hwaddress, $(SANITIZE_TARGET)))
+PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := false
+else
 PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := true
+endif
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
     bootctrl.sdm845 \
