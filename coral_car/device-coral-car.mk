@@ -21,8 +21,6 @@ include device/google_car/coral_car/device-common.mk
 
 DEVICE_PACKAGE_OVERLAYS += device/google/coral/coral/overlay
 
-PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=250
-
 # Audio XMLs for coral
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_volumes_coral.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml

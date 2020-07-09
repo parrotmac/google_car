@@ -26,9 +26,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 include device/google/crosshatch/device.mk
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.control_privapp_permissions=disable
-
 PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
 # Audio fluence, ns, aec property, voice volume steps

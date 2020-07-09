@@ -36,7 +36,3 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     NoCutoutOverlay
-
-# TODO: property below is set on other _car projects, but it doesn't seem to be
-# needed - looks like 250 is already the default value
-# PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=250

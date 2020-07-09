@@ -36,5 +36,3 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     NoCutoutOverlay
-
-PRODUCT_PROPERTY_OVERRIDES += ro.sf.lcd_density=250
