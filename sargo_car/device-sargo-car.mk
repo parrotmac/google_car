@@ -15,6 +15,7 @@
 #
 
 PRODUCT_HARDWARE := sargo
+PHONE_CAR_BOARD_CONFIG := device/google_car/sargo_car/BoardConfig.mk
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 include device/google_car/sargo_car/device-common.mk
