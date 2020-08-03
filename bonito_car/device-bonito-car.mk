@@ -19,7 +19,7 @@ PHONE_CAR_BOARD_CONFIG := device/google_car/bonito_car/BoardConfig.mk
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 include device/google_car/bonito_car/device-common.mk
-include packages/services/Car/computepipe/products/computepipe.mk
+include packages/services/Car/cpp/computepipe/products/computepipe.mk
 
 PRODUCT_COPY_FILES += \
     device/google/bonito/init.insmod.bonito.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.cfg

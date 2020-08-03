@@ -131,4 +131,4 @@ PRODUCT_PRODUCT_PROPERTIES += \
 ##############################
 
 # Sepolicy for EVS
-BOARD_SEPOLICY_DIRS += packages/services/Car/evs/sepolicy
+BOARD_SEPOLICY_DIRS += packages/services/Car/cpp/evs/sepolicy
