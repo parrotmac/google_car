@@ -63,12 +63,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGE_OVERLAYS += device/google_car/blueline_car/overlay
 
-# Pre-create users
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    android.car.number_pre_created_users=1 \
-    android.car.number_pre_created_guests=1 \
-    android.car.user_hal_enabled=true
-
 # Enable landscape
 PRODUCT_COPY_FILES += \
             frameworks/native/data/etc/android.hardware.screen.landscape.xml:system/etc/permissions/android.hardware.screen.landscape.xml
