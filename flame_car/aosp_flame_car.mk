@@ -1,5 +1,5 @@
 #
-# Copyright 2019 The Android Open Source Project
+# Copyright 2020 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/coral_car/manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/flame_car/manifest.xml
 
 #
 # All components inherited here go to system image
@@ -23,7 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
 
 # mainline_system.mk sets 'PRODUCT_ENFORCE_RRO_TARGETS := *'
-# but this breaks coral_car. So undo it here.
+# but this breaks flame_car. So undo it here.
 PRODUCT_ENFORCE_RRO_TARGETS :=
 
 # Enable mainline checking
@@ -46,6 +46,7 @@ PRODUCT_PACKAGES += \
             android.hardware.broadcastradio@2.0-service \
             android.hardware.automotive.vehicle@2.0-service
 
+
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
 
@@ -58,7 +59,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
             dalvik.vm.heapgrowthlimit=256m
 
-PRODUCT_PACKAGE_OVERLAYS += device/google_car/coral_car/overlay
+PRODUCT_PACKAGE_OVERLAYS += device/google_car/flame_car/overlay
 
 # Pre-create users
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -110,9 +111,9 @@ PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
-$(call inherit-product, device/google_car/coral_car/device-coral-car.mk)
+$(call inherit-product, device/google_car/flame_car/device-flame-car.mk)
 $(call inherit-product-if-exists, vendor/google_devices/coral/proprietary/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/coral/prebuilts/device-vendor-coral.mk)
+$(call inherit-product-if-exists, vendor/google_devices/coral/prebuilts/device-vendor-flame.mk)
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
@@ -125,6 +126,6 @@ PRODUCT_BUILD_SUPER_PARTITION := false
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
-PRODUCT_NAME := aosp_coral_car
-PRODUCT_DEVICE := coral
-PRODUCT_MODEL := AOSP on coral
+PRODUCT_NAME := aosp_flame_car
+PRODUCT_DEVICE := flame
+PRODUCT_MODEL := AOSP on flame

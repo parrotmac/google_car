@@ -46,19 +46,28 @@ PRODUCT_PACKAGES += \
             android.hardware.broadcastradio@2.0-service \
             android.hardware.automotive.vehicle@2.0-service
 
+# Additional selinux policy
+BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
+
 PRODUCT_PACKAGES += \
-            android.hardware.automotive.audiocontrol@1.0-service \
-	    android.hardware.automotive.evs@1.0-service
+            android.hardware.automotive.audiocontrol@1.0-service
 
 # Car init.rc
 PRODUCT_COPY_FILES += \
             packages/services/Car/car_product/init/init.bootstat.rc:root/init.bootstat.rc \
-            packages/services/Car/car_product/init/init.car.rc:root/init.car.rc \
-	    $(LOCAL_PATH)/vendor/automotive.evs@1.0-service.rc:/vendor/etc/init/android.hardware.automotive.evs@1.0-service.rc
+            packages/services/Car/car_product/init/init.car.rc:root/init.car.rc
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
             dalvik.vm.heapgrowthlimit=256m
+
+PRODUCT_PACKAGE_OVERLAYS += device/google_car/crosshatch_car/overlay
+
+# Pre-create users
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    android.car.number_pre_created_users=1 \
+    android.car.number_pre_created_guests=1 \
+    android.car.user_hal_enabled=true
 
 # Enable landscape
 PRODUCT_COPY_FILES += \
@@ -91,6 +100,14 @@ PRODUCT_COPY_FILES += \
  PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.broadcastradio.xml:system/etc/permissions/android.hardware.broadcastradio.xml
 
+# EVS v1.1
+PRODUCT_PACKAGES += android.automotive.evs.manager@1.1 \
+                    android.hardware.automotive.evs@1.1-sample \
+                    evs_app
+PRODUCT_PRODUCT_PROPERTIES += persist.automotive.evs.mode=0
+
+# Automotive display service
+PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 #
 # All components inherited here go to vendor image
