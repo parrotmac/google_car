@@ -39,4 +39,7 @@ PRODUCT_PRODUCT_PROPERTIES += persist.automotive.evs.mode=0
 PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 # Sepolicy for EVS
-BOARD_SEPOLICY_DIRS += packages/services/Car/cpp/evs/sepolicy
+include packages/services/Car/cpp/evs/sepolicy/evs.mk
+
+# Sepolicy for occupant awareness system
+include packages/services/Car/car_product/occupant_awareness/OccupantAwareness.mk
