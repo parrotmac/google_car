@@ -20,9 +20,9 @@ DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/coral_car/manifest.xml
 # All components inherited here go to system image
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_system.mk)
 
-# mainline_system.mk sets 'PRODUCT_ENFORCE_RRO_TARGETS := *'
+# generic_system.mk sets 'PRODUCT_ENFORCE_RRO_TARGETS := *'
 # but this breaks coral_car. So undo it here.
 PRODUCT_ENFORCE_RRO_TARGETS :=
 
