@@ -61,7 +61,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
             dalvik.vm.heapgrowthlimit=256m
 
-PRODUCT_PACKAGE_OVERLAYS += device/google_car/sargo_car/overlay
+PRODUCT_PACKAGE_OVERLAYS += device/google_car/common/overlay
 
 # Enable landscape
 PRODUCT_COPY_FILES += \
