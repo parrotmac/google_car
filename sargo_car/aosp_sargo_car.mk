@@ -1,5 +1,5 @@
 #
-# Copyright 2019 The Android Open Source Project
+# Copyright 2020 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,16 +14,16 @@
 # limitations under the License.
 #
 
-DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/crosshatch_car/manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/sargo_car/manifest.xml
 
 #
 # All components inherited here go to system image
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_system.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
 
-# generic_system.mk sets 'PRODUCT_ENFORCE_RRO_TARGETS := *'
-# but this breaks crosshatch_car. So undo it here.
+# mainline_system.mk sets 'PRODUCT_ENFORCE_RRO_TARGETS := *'
+# but this breaks sargo_car. So undo it here.
 PRODUCT_ENFORCE_RRO_TARGETS :=
 
 # Enable mainline checking
@@ -61,7 +61,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
             dalvik.vm.heapgrowthlimit=256m
 
-PRODUCT_PACKAGE_OVERLAYS += device/google_car/crosshatch_car/overlay
+PRODUCT_PACKAGE_OVERLAYS += device/google_car/sargo_car/overlay
 
 # Pre-create users
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -116,8 +116,8 @@ PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
-$(call inherit-product, device/google_car/crosshatch_car/device-crosshatch-car.mk)
-$(call inherit-product-if-exists, vendor/google_devices/crosshatch/proprietary/device-vendor.mk)
+$(call inherit-product, device/google_car/sargo_car/device-sargo-car.mk)
+$(call inherit-product-if-exists, vendor/google_devices/bonito/proprietary/device-vendor.mk)
 
 
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
@@ -125,8 +125,12 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/
 # STOPSHIP deal with Qualcomm stuff later
 # PRODUCT_RESTRICT_VENDOR_FILES := all
 
+# TODO: line below was set on aosp_sargo.mk, but it's not included on other _car
+# projects
+# PRODUCT_PACKAGES += com.android.vndk.current.on_vendor
+
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
-PRODUCT_NAME := aosp_crosshatch_car
-PRODUCT_DEVICE := crosshatch
-PRODUCT_MODEL := AOSP on crosshatch
+PRODUCT_NAME := aosp_sargo_car
+PRODUCT_DEVICE := sargo
+PRODUCT_MODEL := AOSP on sargo

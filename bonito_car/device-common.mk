@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2019 The Android Open-Source Project
+# Copyright (C) 2020 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,31 +14,21 @@
 # limitations under the License.
 #
 
+# NOTE: this file was copied from google/device/bonito/device-common.mk, with the
+# following changes
+# - removed LOCAL_PATH
+# - added auto-specific settings at the end
+
 TARGET_USERIMAGES_USE_F2FS := true
 
-LOCAL_PATH := device/google/crosshatch
-
 # define hardware platform
-PRODUCT_PLATFORM := sdm845
+PRODUCT_PLATFORM := sdm670
 
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-include device/google/crosshatch/device.mk
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.control_privapp_permissions=disable
-
-PRODUCT_ENFORCE_RRO_TARGETS := framework-res
-
-# Audio fluence, ns, aec property, voice volume steps
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qc.sdk.audio.fluencetype=fluencepro \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.speaker=true \
-    persist.audio.fluence.voicecomm=true \
-    persist.audio.fluence.voicerec=false \
-    ro.config.vc_call_vol_steps=7
+include device/google/bonito/device-audio-mfg.mk
+include device/google/bonito/device.mk
 
 # Bug 77867216
 PRODUCT_PROPERTY_OVERRIDES += audio.adm.buffering.ms=3
@@ -46,14 +36,9 @@ PRODUCT_PROPERTY_OVERRIDES += vendor.audio.adm.buffering.ms=3
 PRODUCT_PROPERTY_OVERRIDES += audio_hal.period_multiplier=2
 PRODUCT_PROPERTY_OVERRIDES += af.fast_track_multiplier=1
 
-# Enable HW Codec 2.0 as default service
-# Set all codec components are available with their normal ranks
-# Set OMX components's default rank large than Codec 2.0 HW components's default rank (0x100)
+# Set c2 codec in default
 PRODUCT_PROPERTY_OVERRIDES += debug.stagefright.ccodec=4
 PRODUCT_PROPERTY_OVERRIDES += debug.stagefright.omx_default_rank=512
-
-# Pixelstats broken mic detection
-PRODUCT_PROPERTY_OVERRIDES += vendor.audio.mic_break=true
 
 # Setting vendor SPL
 VENDOR_SECURITY_PATCH = $(PLATFORM_SECURITY_PATCH)
@@ -92,15 +77,8 @@ PRODUCT_PROPERTY_OVERRIDES += aaudio.hw_burst_min_usec=2000
 
 # Set lmkd options
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.lmk.low=1001 \
-    ro.lmk.medium=800 \
-    ro.lmk.critical=0 \
-    ro.lmk.critical_upgrade=false \
-    ro.lmk.upgrade_pressure=100 \
-    ro.lmk.downgrade_pressure=100 \
-    ro.lmk.kill_heaviest_task=true \
-    ro.lmk.kill_timeout_ms=100 \
-    ro.lmk.use_minfree_levels=true \
+    ro.config.low_ram = false \
+    ro.lmk.log_stats = true \
 
 # A2DP offload enabled for compilation
 AUDIO_FEATURE_ENABLED_A2DP_OFFLOAD := true
@@ -119,38 +97,20 @@ persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
 
 # Modem loging file
 PRODUCT_COPY_FILES += \
-    device/google/crosshatch/init.logging.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).logging.rc
+    device/google/bonito/init.logging.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(PRODUCT_PLATFORM).logging.rc
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.crosshatch
+    android.hardware.dumpstate@1.0-service.bonito
 
-# Dmabuf dump tool for bug reports
-PRODUCT_PACKAGES += \
-    dmabuf_dump
-
-# whitelisted app
-PRODUCT_COPY_FILES += \
-    device/google/crosshatch/qti_whitelist.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/qti_whitelist.xml
-
-PRODUCT_PACKAGES += \
-    llkd
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.khungtask.enable=false
-#
-
-# Enable retrofit dynamic partitions for all blueline
-# and crosshatch (except for hwaddress) targets
+# Enable retrofit dynamic partitions for all bonito
+# and sargo targets
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
-ifneq (,$(filter hwaddress, $(SANITIZE_TARGET)))
-PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := false
-else
 PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := true
-endif
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
-    bootctrl.sdm845 \
-    bootctrl.sdm845.recovery \
+    bootctrl.sdm710 \
+    bootctrl.sdm710.recovery \
     check_dynamic_partitions \
 
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -158,6 +118,17 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_PATH_product=bin/check_dynamic_partitions \
     FILESYSTEM_TYPE_product=ext4 \
     POSTINSTALL_OPTIONAL_product=false \
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.protected_contents=true
+
+# Set thermal warm reset
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.thermal_warmreset = true \
+
+##############################
+### Auto-specific settings ###
+##############################
 
 # Sepolicy for EVS
 BOARD_SEPOLICY_DIRS += packages/services/Car/evs/sepolicy
