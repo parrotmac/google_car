@@ -14,7 +14,6 @@
 # limitations under the License.
 #
 
-DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/crosshatch_car/manifest.xml
 DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/common/manifest.xml
 
 #

@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/flame_car/manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/common/manifest.xml
 
 #
 # All components inherited here go to system image
