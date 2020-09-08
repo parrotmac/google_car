@@ -1,5 +1,5 @@
 #
-# Copyright 2019 The Android Open Source Project
+# Copyright 2020 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,21 +14,21 @@
 # limitations under the License.
 #
 
-DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/crosshatch_car/manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/flame_car/manifest.xml
 
 #
 # All components inherited here go to system image
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_system.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
 
-# generic_system.mk sets 'PRODUCT_ENFORCE_RRO_TARGETS := *'
-# but this breaks crosshatch_car. So undo it here.
+# mainline_system.mk sets 'PRODUCT_ENFORCE_RRO_TARGETS := *'
+# but this breaks flame_car. So undo it here.
 PRODUCT_ENFORCE_RRO_TARGETS :=
 
 # Enable mainline checking
-# TODO(b/138706293): Enable mainline checking later
-# PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := relaxed
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
+
 
 #
 # All components inherited here go to system_ext image
@@ -46,11 +46,9 @@ PRODUCT_PACKAGES += \
             android.hardware.broadcastradio@2.0-service \
             android.hardware.automotive.vehicle@2.0-service
 
+
 # Additional selinux policy
 BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
-
-PRODUCT_PACKAGES += \
-            android.hardware.automotive.audiocontrol@1.0-service
 
 # Car init.rc
 PRODUCT_COPY_FILES += \
@@ -61,7 +59,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
             dalvik.vm.heapgrowthlimit=256m
 
-PRODUCT_PACKAGE_OVERLAYS += device/google_car/crosshatch_car/overlay
+PRODUCT_PACKAGE_OVERLAYS += device/google_car/flame_car/overlay
 
 # Pre-create users
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -73,9 +71,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_COPY_FILES += \
             frameworks/native/data/etc/android.hardware.screen.landscape.xml:system/etc/permissions/android.hardware.screen.landscape.xml
 
-# Vendor Interface Manifest
-PRODUCT_COPY_FILES += \
-            frameworks/native/data/etc/android.hardware.broadcastradio.xml:system/etc/permissions/android.hardware.broadcastradio.xml
 
 TARGET_USES_CAR_FUTURE_FEATURES := true
 
@@ -116,17 +111,21 @@ PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_vendor.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_vendor.mk)
 
-$(call inherit-product, device/google_car/crosshatch_car/device-crosshatch-car.mk)
-$(call inherit-product-if-exists, vendor/google_devices/crosshatch/proprietary/device-vendor.mk)
+$(call inherit-product, device/google_car/flame_car/device-flame-car.mk)
+$(call inherit-product-if-exists, vendor/google_devices/coral/proprietary/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/google_devices/coral/prebuilts/device-vendor-flame.mk)
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
 
-PRODUCT_COPY_FILES += $(LOCAL_PATH)/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
+# Don't build super.img.
+PRODUCT_BUILD_SUPER_PARTITION := false
 
-# STOPSHIP deal with Qualcomm stuff later
+# b/113232673 STOPSHIP deal with Qualcomm stuff later
 # PRODUCT_RESTRICT_VENDOR_FILES := all
 
 PRODUCT_MANUFACTURER := Google
 PRODUCT_BRAND := Android
-PRODUCT_NAME := aosp_crosshatch_car
-PRODUCT_DEVICE := crosshatch
-PRODUCT_MODEL := AOSP on crosshatch
+PRODUCT_NAME := aosp_flame_car
+PRODUCT_DEVICE := flame
+PRODUCT_MODEL := AOSP on flame

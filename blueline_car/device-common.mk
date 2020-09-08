@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2019 The Android Open-Source Project
+# Copyright (C) 2020 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
 #
 
 TARGET_USERIMAGES_USE_F2FS := true
-
-LOCAL_PATH := device/google/crosshatch
 
 # define hardware platform
 PRODUCT_PLATFORM := sdm845
@@ -123,7 +121,7 @@ PRODUCT_COPY_FILES += \
 
 # Dumpstate HAL
 PRODUCT_PACKAGES += \
-    android.hardware.dumpstate@1.0-service.crosshatch
+    android.hardware.dumpstate@1.0-service.blueline
 
 # Dmabuf dump tool for bug reports
 PRODUCT_PACKAGES += \
@@ -140,13 +138,9 @@ PRODUCT_PACKAGES += \
 #
 
 # Enable retrofit dynamic partitions for all blueline
-# and crosshatch (except for hwaddress) targets
+# and blueline targets
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
-ifneq (,$(filter hwaddress, $(SANITIZE_TARGET)))
-PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := false
-else
 PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := true
-endif
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
     bootctrl.sdm845 \
