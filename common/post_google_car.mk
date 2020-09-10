@@ -48,6 +48,9 @@ include packages/services/Car/cpp/evs/sepolicy/evs.mk
 # Sepolicy for occupant awareness system
 include packages/services/Car/car_product/occupant_awareness/OccupantAwareness.mk
 
+# Sepolicy for compute pipe system
+include packages/services/Car/cpp/computepipe/products/computepipe.mk
+
 PRODUCT_COPY_FILES += \
     device/google_car/common/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
 

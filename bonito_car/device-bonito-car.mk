@@ -14,26 +14,8 @@
 # limitations under the License.
 #
 
-PRODUCT_HARDWARE := bonito
 PHONE_CAR_BOARD_CONFIG := device/google_car/bonito_car/BoardConfig.mk
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
-include device/google_car/bonito_car/device-common.mk
-include packages/services/Car/cpp/computepipe/products/computepipe.mk
 
-PRODUCT_COPY_FILES += \
-    device/google/bonito/init.insmod.bonito.cfg:$(TARGET_COPY_OUT_VENDOR)/etc/init.insmod.cfg
-
-DEVICE_PACKAGE_OVERLAYS += device/google/bonito/bonito/overlay
-
-# Audio XMLs
-PRODUCT_COPY_FILES += \
-    device/google/bonito/mixer_paths_intcodec_b4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_intcodec_b4.xml \
-    device/google/bonito/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
-    device/google/bonito/audio_platform_info_intcodec_b4.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info_intcodec_b4.xml
-
-PRODUCT_COPY_FILES += \
-    device/google/bonito/nfc/libnfc-nxp.bonito.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nxp.conf
-
-PRODUCT_PACKAGES += \
-    NoCutoutOverlay
+$(call inherit-product, device/google/bonito/device-bonito.mk)
