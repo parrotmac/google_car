@@ -61,7 +61,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
             dalvik.vm.heapgrowthlimit=256m
 
-PRODUCT_PACKAGE_OVERLAYS += device/google_car/common/overlay
+# NOTE: nothing is overlaid anymore, so the overlay directory was removed.
+# PRODUCT_PACKAGE_OVERLAYS += device/google_car/common/overlay
 
 # Enable landscape
 PRODUCT_COPY_FILES += \
