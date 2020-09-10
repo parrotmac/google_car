@@ -28,4 +28,4 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth Tx power caps for coral
 PRODUCT_COPY_FILES += \
-    device/google/coral/bluetooth_power_limits_coral.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits.csv
+    $(LOCAL_PATH)/bluetooth_power_limits_coral.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits.csv

@@ -14,6 +14,10 @@
 # limitations under the License.
 #
 
+####
+#### This file should be included at the bottom of the aosp_PHONE_car.mk file
+####
+
 # Auto modules
 PRODUCT_PACKAGES += \
             android.hardware.automotive.audiocontrol@1.0-service \
@@ -43,3 +47,11 @@ include packages/services/Car/cpp/evs/sepolicy/evs.mk
 
 # Sepolicy for occupant awareness system
 include packages/services/Car/car_product/occupant_awareness/OccupantAwareness.mk
+
+PRODUCT_COPY_FILES += \
+    device/google_car/common/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+
+# Don't build super.img - apparently this is false by default for all devices but coral
+# (which sets PRODUCT_BUILD_SUPER_PARTITION_SUPER_PARTITION to true), but it doesn't hurt to
+# force it to false here
+PRODUCT_BUILD_SUPER_PARTITION := false
