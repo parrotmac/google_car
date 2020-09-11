@@ -43,3 +43,7 @@ include packages/services/Car/cpp/computepipe/products/computepipe.mk
 
 PRODUCT_COPY_FILES += \
     device/google_car/common/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
+
+PRODUCT_PROPERTY_OVERRIDES += \
+        ro.boot.wificountrycode=00 \
+        log.tag.CarTrustAgentUnlockEvent=I
