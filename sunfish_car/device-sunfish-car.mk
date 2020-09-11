@@ -14,19 +14,8 @@
 # limitations under the License.
 #
 
-PRODUCT_HARDWARE := sunfish
 PHONE_CAR_BOARD_CONFIG := device/google_car/sunfish_car/BoardConfig.mk
-ORIG_LOCAL_PATH=device/google/sunfish
 
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
-include device/google_car/sunfish_car/device-common.mk
 
-DEVICE_PACKAGE_OVERLAYS += device/google/sunfish/sunfish/overlay
-
-# Audio XMLs for sunfish
-PRODUCT_COPY_FILES += \
-    $(ORIG_LOCAL_PATH)/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml
-
-# Bluetooth Tx power caps for sunfish
-PRODUCT_COPY_FILES += \
-    $(ORIG_LOCAL_PATH)/bluetooth_power_limits_sunfish.csv:$(TARGET_COPY_OUT_VENDOR)/etc/bluetooth_power_limits.csv
+$(call inherit-product, device/google/sunfish/device-sunfish.mk)

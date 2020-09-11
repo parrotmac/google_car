@@ -27,7 +27,6 @@ PRODUCT_ENFORCE_RRO_TARGETS :=
 # Enable mainline checking
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
 
-
 # All components inherited here go to system image
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
