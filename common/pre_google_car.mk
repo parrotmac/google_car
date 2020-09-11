@@ -91,6 +91,9 @@ PRODUCT_COPY_FILES += \
  PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/android.hardware.broadcastradio.xml:system/etc/permissions/android.hardware.broadcastradio.xml
 
+# Include EVS reference implementations
+ENABLE_EVS_SAMPLE := true
+
 #
 # All components inherited here go to vendor image
 #
