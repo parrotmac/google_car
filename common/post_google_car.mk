@@ -32,9 +32,6 @@ PRODUCT_PACKAGES_DEBUG += \
 
 BOARD_SEPOLICY_DIRS += device/google_car/common/sepolicy
 
-# Automotive display service
-PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
-
 # Sepolicy for occupant awareness system
 include packages/services/Car/car_product/occupant_awareness/OccupantAwareness.mk
 
