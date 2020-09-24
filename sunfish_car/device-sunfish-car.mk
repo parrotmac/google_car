@@ -19,3 +19,6 @@ PHONE_CAR_BOARD_CONFIG := device/google_car/sunfish_car/BoardConfig.mk
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
 
 $(call inherit-product, device/google/sunfish/device-sunfish.mk)
+
+PRODUCT_PRODUCT_PROPERTIES+= \
+    ro.adb.secure=0
