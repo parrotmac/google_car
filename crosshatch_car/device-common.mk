@@ -160,4 +160,4 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_product=false \
 
 # Sepolicy for EVS
-include packages/services/Car/evs/sepolicy/evs.mk
+BOARD_SEPOLICY_DIRS += packages/services/Car/evs/sepolicy
