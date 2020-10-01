@@ -44,3 +44,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
         ro.boot.wificountrycode=00 \
         log.tag.CarTrustAgentUnlockEvent=I
+
+# Phone car targets don't support ramdump
+EXCLUDE_BUILD_RAMDUMP_UPLOADER_DEBUG_TOOL := true
