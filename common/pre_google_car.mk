@@ -20,7 +20,7 @@
 
 DEVICE_FRAMEWORK_MANIFEST_FILE += device/google_car/common/manifest.xml
 
-# mainline_system.mk sets 'PRODUCT_ENFORCE_RRO_TARGETS := *'
+# generic_system.mk sets 'PRODUCT_ENFORCE_RRO_TARGETS := *'
 # but this breaks phone_car. So undo it here.
 PRODUCT_ENFORCE_RRO_TARGETS :=
 
@@ -30,7 +30,7 @@ PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS :=
 # All components inherited here go to system image
 #
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic_system.mk)
 
 #
 # All components inherited here go to system_ext image
